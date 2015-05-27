@@ -1,0 +1,267 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!-- saved from url=(0052)http://www.cihak.com/michal/java/maturita/index.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1250">
+  
+  <meta name="generator" content="PSPad editor, www.pspad.com">
+  <title>Java - sbírka úloh</title>
+  <style type="text/css">  
+  h1 {color: black;}
+  h2 {color: grey;}
+  b {color: brown}
+  .console {  
+    background-color: black;  
+    color: #ffffff;  
+    font-family: courier;  
+  }  
+  </style>
+  <link href="syntax/Styles/shCore.css" rel="stylesheet" type="text/css">
+  <link href="syntax/Styles/shThemeDefault.css" rel="stylesheet" type="text/css">
+  <script type="text/javascript" src="syntax/Scripts/shCore.js"></script>   
+  <script type="text/javascript" src="syntax/Scripts/shBrushJava.js"></script>  
+   
+  </head>
+  <body>
+
+
+
+<h1>Programování v jazyce Java – řídící struktury</h1>  
+
+<h2>Ukázka porovnání dvou čísel</h2>
+<pre name="code" class="brush: java">
+import java.util.Scanner;
+ 
+class Porovnani {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Napis cele cislo a: ");
+        int a;
+        a = sc.nextInt();
+        System.out.print("Napis cele cislo b: ");
+        int b;
+        b = sc.nextInt();
+        if (a &gt; b) 
+            System.out.print("Cislo a je vetsi nez b.");
+        else
+    	    System.out.print("Cislo a je mensi nebo rovno cislu b.");
+    }
+}
+</pre>
+ 
+<h2>Ukázka - jak poznat sudé číslo (číslo dělitelné 2)</h2>
+<pre name="code" class="brush: java">
+import java.util.Scanner;
+ 
+class Sude {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Napis cele cislo a: ");
+        int a;
+        a = sc.nextInt();
+        if (a % 2 == 0) 
+            System.out.print("Cislo a je sude.");
+        else
+    	    System.out.print("Cislo a je liche.");
+    }
+}
+</pre> 
+ 
+ 
+<h2>Úkoly:</h2>
+<ol>
+<li> Napište program, který požádá uživatele o zadání jednoho celého čísla. Poté program vypíše, jestli dané číslo:
+<ol>
+<li>je kladné</li>
+<li>leží v intervalu (-10, 10)</li>
+<li>je sudé</li>
+<li>je dělitené 3 nebo 5</li>
+</ol>
+</li>
+<li>Napište program, který požádá uživatele o zadání tří čísel a určí největší z nich.</li>
+<li> Napište program, který požádá uživatele o zadání tří čísel a vypíše je v pořadí od nejmenšího k největšímu.</li>
+</ol>
+ 
+ 
+<h2>Ukázka cyklu for - výpis všech lichých čísel od 1 do 99</h2>
+<pre name="code" class="brush: java">
+class VypisLichych {  
+    public static void main(String[] args) {  
+        int i, s=0;
+        for (i=1; i &lt;= 99; i+=2)
+        {    
+            System.out.println(i);                              
+        }          
+    }
+} 
+</pre>
+ 
+<h2>Ukázka cyklu for - součet čísel od 1 do 100</h2>
+<pre name="code" class="brush: java">
+class Soucet100 {  
+    public static void main(String[] args) {  
+        int i, s=0;
+        for (i=1; i &lt;= 100; i++)
+        {    
+            s = s + i;                 
+        }  
+        System.out.println(s);             
+    }
+} 
+</pre>
+ 
+<h2>Výpis znaků z části Unicode tabulky</h2>
+<pre name="code" class="brush: java">
+class Znaky {  
+    public static void main(String[] args) {  
+        int i;
+        for (i=32; i &lt;= 127; i++)
+        {    
+            System.out.println((char)i);                 
+        }                   
+    }
+}
+</pre>
+ 
+<h2>Úkoly:</h2>
+<ol>
+<li>Vypište všechna čísla od 100 do 1 sestupně.</li>
+<li>Vypište všechny násobky čísla 7 menší než 1000 (vzestupně).</li>
+<li>Napište program, který vyzve uživatele, aby zadal přirozené číslo. Program potom vypíše všechna lichá čísla, která jsou menší než zadané číslo.</li>
+<li>Napište program, který vyzve uživatele, aby zadal dvě celá čísla. Program potom vypíše všechna čísla, která leží mezi těmito dvěma zadanými čísly.
+(Pozor, program musí fungovat i v případě, že první zadané číslo je větší než druhé.)</li>
+<li>Napište program, který vyzve uživatele, aby zadal dva znaky. Program potom
+vypíše všechny znaky z Unicode tabulky, které leží mezi těmito dvěma zadanými znaky.</li>
+<li>Určete součet všech sudých čísel ležících mezi čísly 1000 a 2000.</li>
+<li>Napište program, který vypočítá faktoriál zadaného čísla.</li> 
+</ol>
+ 
+<h2>Ukázka cyklu while - program sčítá čísla dokud nezadáme 0</h2>
+<pre name="code" class="brush: java">
+import java.util.Scanner;  
+    
+class Scitacka1 {  
+    public static void main(String[] args) {  
+        Scanner sc = new Scanner(System.in);  
+        System.out.print("Napis cislo: ");
+        int s = 0;
+        int i = sc.nextInt();        
+        while (i!=0)
+        {   
+            s = s + i; 
+            System.out.print("Mezisoucet je: ");
+            System.out.println(s);
+            System.out.print("Napis dalsi cislo: ");
+            i = sc.nextInt();                              
+        }         
+    }
+}
+</pre>
+ 
+<h2>Ukázka cyklu do-while - program sčítá čísla dokud nezadáme 0</h2>
+<pre name="code" class="brush: java">
+import java.util.Scanner;  
+    
+class Scitacka2 {  
+    public static void main(String[] args) {  
+        Scanner sc = new Scanner(System.in);  
+        System.out.print("Napis cislo: ");
+        int s = 0;
+        int i = sc.nextInt();        
+        do
+        {   
+            s = s + i; 
+            System.out.print("Mezisoucet je: ");
+            System.out.println(s);
+            System.out.print("Napis dalsi cislo: ");
+            i = sc.nextInt();                              
+        } while (i!=0);        
+    }
+}
+</pre> 
+ 
+ 
+<h2>Úkoly:</h2>
+<ol>
+<li>Vypište všechna čísla od 100 do 1 sestupně. Použijte cyklus <code>while</code>.</li>
+<li>Vypište všechny násobky čísla 7 menší než 1000 (vzestupně). Použijte cyklus <code>do-while</code>.</li>
+<li>Napište program, který vyzve uživatele, aby zadal přirozené číslo. Program potom vypíše všechna lichá čísla, která jsou menší než zadané číslo. Vyzkoušejte variantu s cyklem <code>while</code> i s cyklem <code>do-while</code>.</li>
+<li>Napište program, který postupně násobí celá čísla, která zadává uživatel po spuštění programu. Program průběžně vypisuje aktuální výsledek (součin). Program skončí ve chvíli, kdy uživatel zadá číslo 0 (nula). Použijte cyklus <code>while</code>.</li>
+<li>Pokuste se upravit program z předchozí úlohy tak, že použijete cyklus <code>do-while</code>.</li>
+<li>Napište program, který čte celá čísla (zadávaná uživatelem po spuštění programu) tak dlouho, dokud uživatel nezadá číslo 0 (nula). U každého zadaného čísla program vypíše, jestli je sudé, nebo liché.</li>
+<li>Napište program, který čte celá čísla (zadávaná uživatelem po spuštění programu) tak dlouho, dokud uživatel nezadá číslo 0 (nula). Na závěr program vypíše, kolik zadaných čísel bylo z intervalu &lt;10, 20&gt;.</li>
+<li>Napište program, který přečte <i>n</i> čísel zadávaných postupně uživatelem (číslo <i>n</i> zadá uživatel jako první). Pro každý vstup čísla program vypíše:<br>
+Zadej 1. cislo:<br>
+Zadej 2. cislo:<br>
+...<br>
+Ze zadaných čísel určete, kolik jich leží v intervalu &lt;50, 100&gt;.</li>
+<li>Napište program, který přečte <i>n</i> čísel zadávaných postupně uživatelem (číslo <i>n</i> zadá uživatel jako první) a určí největší z nich.
+</li>
+</ol>
+
+
+<h2>Testové úlohy 1</h2>
+<ol>
+<li>Napište program, který vypíše postupně přirozená čísla od 1 do 20 spolu s jejich druhými mocninami. Výpis by měl vypadat takto:<br>
+1 na druhou je 1<br>
+2 na druhou je 4<br>
+3 na druhou je 9<br>
+...<br>
+Použijte cyklus <code>for</code>.</li>
+<li>Napište program, který vyzve uživatele, aby zadal přirozené číslo <i>n</i>. Program potom vypíše postupně přirozená čísla od 1 do <i>n</i> spolu s jejich druhými mocninami. Výpis by měl vypadat, například, takto:<br>
+Zadej číslo n: 5<br>
+1 na druhou je 1<br>
+2 na druhou je 4<br>
+3 na druhou je 9<br>
+4 na druhou je 16<br>
+5 na druhou je 25<br>
+Použijte cyklus <code>while</code>.</li>
+<li>Napište program, který čte celá čísla (zadávaná uživatelem po spuštění programu) tak dlouho, dokud uživatel nezadá číslo 0 (nula). U každého zadaného čísla program vypíše jeho druhou mocninu.</li> Výpis by měl vypadat, například, takto:<br>
+Zadej číslo: 3<br>
+3 na druhou je 9<br>
+--------------------<br>
+Zadej číslo: 7<br>
+7 na druhou je 49<br>
+--------------------<br>
+Zadej číslo: 12<br>
+12 na druhou je 144<br>
+--------------------<br>
+Zadej číslo: 0<br>
+Konec<br>
+Použijte cyklus <code>do-while</code>.</li>
+</ol>
+
+<h2>Testové úlohy 2</h2>
+<ol>
+<li>Napište program, který vypíše postupně přirozená čísla od 1 do 20 spolu s počtem hvězdiček rovným danému číslu. Výpis by měl vypadat takto:<br>
+<pre>
+1 *
+2 **
+3 ***
+...
+</pre>
+Použijte cyklus <code>for</code>.</li>
+<li>Napište program, který čte celá čísla (zadávaná uživatelem po spuštění programu) tak dlouho, dokud uživatel nezadá číslo 0 (nula). U každého zadaného čísla program vypíše takový počet hvězdiček, jaké číslo bylo zadáno.
+Výpis by měl vypadat, například, takto:
+<pre>
+Zadej číslo: 3
+3 ***
+Zadej číslo: 7
+7 *******
+Zadej číslo: 12
+12 ************
+Zadej číslo: 0
+Konec
+</pre>
+Vylepšení: Pokud je zadané číslo větší 50, program nevypíše hvězdičky, ale text "Moc velke cislo!".
+</li>
+</ol>
+
+
+
+
+  <script type="text/javascript">  
+   SyntaxHighlighter.all("code")   
+  </script>       
+  
+
+
+</body></html>

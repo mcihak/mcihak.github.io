@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!-- saved from url=(0052)http://www.cihak.com/michal/java/maturita/index.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1250">
+  
+  <meta name="generator" content="PSPad editor, www.pspad.com">
+  <title>Java - sbírka úloh</title>
+  <style type="text/css">  
+  h1 {color: black;}
+  h2 {color: grey;}
+  b {color: brown}
+  .console {  
+    background-color: black;  
+    color: #ffffff;  
+    font-family: courier;  
+  }  
+  </style>
+  <link href="syntax/Styles/SyntaxHighlighter.css" rel="stylesheet" type="text/css">
+  <script language="javascript" type="text/javascript" src="syntax/Scripts/shCore.js"></script>   
+  <script language="javascript" type="text/javascript" src="syntax/Scripts/shBrushJava.js"></script>   
+
+   
+  </head>
+  <body>
+
+
+
+<h1>Programování v jazyce Java – metody</h1>  
+
+<h2>Statické metody</h2>
+<pre name="code" class="java">
+import java.util.Scanner;  
+    
+class Metody {
+    
+    static int max(int a, int b) {
+        if (a &gt; b)
+            return(a);
+        else
+            return(b);
+    }
+  
+    public static void main(String[] args) {  
+        Scanner sc = new Scanner(System.in);
+        int x, y, z;  
+        System.out.print("Napis prvni cislo: ");        
+        x = sc.nextInt();        
+        System.out.print("Napis druhe cislo: ");        
+        y = sc.nextInt();
+        z = max(x, y);        
+        System.out.print("Maximum z techto cisel je "+z);                                  
+    }
+} 
+</pre>
+ 
+<h2>Úkoly:</h2>
+<p></p>
+Do třídy Metody z předchozí ukázky doplňte další statické metody:
+<ol>
+<li><b>Jakoukoliv metodu bez parametrů</b></li>
+<li><b>Jakoukoliv metodu bez návratového typu.</b></li>
+<li><b>Vysvětlete, jak funguje zastínění nelokálních proměnnách lokálními proměnnými metody.</b></li>
+<li><b>Metodu, která je přetížením metody max() z ukázky.</b></li>
+<li>Metodu, která bude obsahovat i nějakou lokální proměnnou.</li>
+<li>Metodu min(), která vrátí menší ze dvou čísel, která jsou uvedena jako parametry metody.</li>
+<li>Metodu soucet(), která vrátí součet dvou čísel, která jsou uvedena jako parametry metody.</li>
+<li><b>Metodu prumer(), která vrátí aritmetický průměr ze dvou čísel, která jsou uvedena jako parametry funkce. (Pozor, návratová hodnota metody může být desetinné číslo!)</b></li>
+<li><b>Metodu obsahKruhu(), která pomocí hodnoty parametru r (poloměru kruhu) vypočítá obsah kruhu. (Pozor, hodnota parametru r může být desetinné číslo!)</b></li>
+<li><b>Metodu faktorial(), která vrátí faktoriál přirozeného čísla, které je uvedeno jako parametr metody.</b></li>
+<li>Metodu mocnina(), která vrátí n-tou mocninu čísla x. Přitom n je první parametr metody (přirozené číslo) a x je druhý parametr metody (může to být i desetinné číslo).</li>
+</ol>
+
+
+
+  <script language="javascript" type="text/javascript">  
+   dp.SyntaxHighlighter.ClipboardSwf = "syntax/Styles/clipboard.swf";   
+   dp.SyntaxHighlighter.BloggerMode();  
+   dp.SyntaxHighlighter.HighlightAll('code');   
+  </script>    
+  
+
+
+</body></html>

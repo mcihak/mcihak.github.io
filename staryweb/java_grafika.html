@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!-- saved from url=(0052)http://www.cihak.com/michal/java/maturita/index.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1250">
+  
+  <meta name="generator" content="PSPad editor, www.pspad.com">
+  <title>Java - sbírka úloh</title>
+  <style type="text/css">  
+  h1 {color: black;}
+  h2 {color: grey;}
+  b {color: brown}
+  .console {  
+    background-color: black;  
+    color: #ffffff;  
+    font-family: courier;  
+  }  
+  </style>
+  <link href="syntax/Styles/shCore.css" rel="stylesheet" type="text/css">
+  <link href="syntax/Styles/shThemeDefault.css" rel="stylesheet" type="text/css">
+  <script type="text/javascript" src="syntax/Scripts/shCore.js"></script>
+  <script type="text/javascript" src="syntax/Scripts/shBrushJava.js"></script>
+   
+  </head>
+  <body>
+
+
+
+<h1>Programování v jazyce Java – grafika</h1>  
+
+<h2>Ukázka práce s grafikou - kreslení úseček, elips a obdélníků</h2>
+<pre name="code" class="brush: java">
+import java.awt.*;
+import java.awt.event.*;
+
+class Platno extends Canvas {
+  public void paint(Graphics g) {
+    g.drawLine(15, 20, 100, 200);
+    g.drawOval(300, 200, 50, 80);
+    g.setColor(Color.red);
+    g.drawRect(450, 300, 50, 80);
+    g.setColor(Color.blue);
+    g.fillOval(500, 200, 50, 120);
+    g.fillRect(650, 300, 50, 120);
+    g.drawString("Čeština se vypisuje správně :-)", 100, 400);
+
+  }
+}
+
+public class Kresleni extends Frame {
+  Kresleni() {
+    super.setTitle(getClass().getName());
+    Platno pl = new Platno();
+    this.add(pl, BorderLayout.CENTER);
+    this.setSize(800, 600);
+
+    addWindowListener(new WindowAdapter() {
+      public void windowClosing(WindowEvent e) {
+        System.exit(1);
+      }
+    });
+  }
+
+  public static void main(String[] args) {
+    new Kresleni().setVisible(true);
+  }
+}
+</pre>
+
+Cvičení:
+<ol>
+<li>Napište program, který nakreslí 50 soustředných kružnic.
+<li>Napište program, který nakreslí čtvercovou síť s 15 x 10 čtverci.
+<li>Napište program, který nakreslí domeček s plotem a sluncem nad ním. Při kreslení plotu využijte cyklus for.</li>
+<li>Napište program, který přečte 5 čísel z klávesnice. Tato čísla se uloží do pole a potom se vypíší na plátno a k nim se vykreslí sloupky, jejichž výška bude rovna těmto číslům (sloupkový graf).</li>
+</ol>
+
+
+
+<script type="text/javascript">
+   SyntaxHighlighter.all("code")
+</script>
+  
+
+
+</body></html>
