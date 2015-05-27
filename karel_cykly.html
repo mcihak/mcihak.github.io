@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!-- saved from url=(0052)http://www.cihak.com/michal/java/maturita/index.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1250">
+  
+  <meta name="generator" content="PSPad editor, www.pspad.com">
+  <title>Java - sbírka úloh</title>
+  <style type="text/css">  
+  h1 {color: black;}
+  h2 {color: grey;}
+  b {color: brown}
+  .console {  
+    background-color: black;  
+    color: #ffffff;  
+    font-family: courier;  
+  }  
+  </style>
+  <link href="syntax/Styles/shCore.css" rel="stylesheet" type="text/css">
+  <link href="syntax/Styles/shThemeDefault.css" rel="stylesheet" type="text/css">
+  <script type="text/javascript" src="syntax/Scripts/shCore.js"></script>   
+  <script type="text/javascript" src="syntax/Scripts/shBrushJava.js"></script>  
+   
+  </head>
+  <body>
+
+
+
+<h1>Karel a cykly v jazyce Java</h1>  
+
+<h2>While cyklus</h2>
+
+<p>Následující algoritmus je ukázkou použití while cyklu. Karel pětkrát zopakuje příkaz <code>move()</code>, tedy udělá 5 kroků. </p>
+<pre name="code" class="brush: java">
+import kareltherobot.*;  // nacteme knihovnu pro pro praci s karlem
+
+class PetKroku implements Directions  // tady zacina definice tridy TestKarla    
+{        
+        public static void task()  
+        {        
+                World.readWorld("test.txt");
+                World.setVisible(true);  // zobrazime dvorecek
+                UrRobot kaja = new UrRobot(1, 1, East, 3);  // vytvorime robota se jmenem kaja
+                  // na souradnicich [1, 1] smerujiciho na vychod a nesouciho tri kameny (beeper)
+                
+                int i = 1;  // vytvorime celociselnou promennou (pocitadlo) a vlozime do ni cislo 1
+                while (i < 5)  // dokud je hodnota promenn "i" mensi ne 5 opakuj  
+                {
+                      kaja.move(); 
+                      // System.out.println("Kaja udělal krok číslo " + i);
+                      i++;  //  hodnotu pocitadla zvetsime o jednicku 
+                }
+                kaja.turnOff();  // kaja se vypne (da si slofika :-)
+        }                
+}
+</pre>
+ 
+<p>Jiné použití while cyklu. Karel bude opakovat příkaz <code>move()</code>, dokud před nim bude prázdný prostor, tedy bude kráčet tak dlouho, dokud nedojde ke zdi.</p>
+
+<pre name="code" class="brush: java">
+import kareltherobot.*;  
+
+class KeZdi implements Directions     
+{       public static void task()  
+        {        
+                World.readWorld("test.txt");
+                World.setVisible(true);  
+                Robot kaja = new Robot(1, 1, East, 3);
+
+                while ( kaja.frontIsClear() )  // dokud je pred Kajou prazdny prostor  
+                {
+                      kaja.move(); // Kaja provede krok
+                }
+                kaja.turnOff(); 
+        }                
+}
+</pre>
+
+ 
+ 
+<h2>Úlohy:</h2>
+<ol>
+<li>Kája stojí na prázdném dvorečku. Vytvořte třídu Ctverec, ve které Kaja projde trasu ve tvaru čtverce 5 krát 5 políček.</li>
+<li>Upravte třídu Ctverec z předchozí úlohy tak, aby Kája prošel trasu ve tvaru čtverce 5 krát 5 políček a při každém kroku položil jeden kámen. Na dvorečku by tak měl vzniknout čtverec z kamenů.</li>
+<li>Vytvořte třídu HromadaUZdi, ve které Kája nejprve dojde ke zdi a poté u ní (na jediném políčku) postaví hromadu deseti kamenů.</li>
+<li>Vytvořte třídu PocetKeZdi, ve které Kája dojde ke zdi, přičemž si cestou bude počítat kroky. Po příchodu Káji ke zdi vypište do konzole počet kroků, které Kája provedl.</li>
+<li>Kája stojí na dvorečku a v jeho směru (v jedné linii) je několik kamenů (žádné hromádky, ale samostatné kameny). Vytvořte třídu SeberKeZdi, ve které bude Kája kráčet přímo ke zdi a cestou posbírá všechny kameny. Nápověda: Použijte metodu <code>nextToBeeper()</code>. Můžete použít <a href="dvorecek_10x10.txt">dvoreček 10 x 10</a>, ale algoritmus musí fungovat nezávisle na velikosti dvorečku.</li>
+<li>Kája stojí na dvorečku a v jeho směru je hromada kamenů (o neznámém počtu kamenů) umístěná na jednom políčku v neznámé vzdálenosti od Káji. Vytvořte třídu SeberHromadu, ve které Kája nejprve dokráčí k hromadě a potom posbírá všechny kameny, ze kterých je tvořena.</li>
+<li>Kája stojí na dvorečku a v jeho směru (v jedné linii) je několik hromádek kamenů (o neznámém počtu kamenů) v neznámé vzdálenosti od Káji. Vytvořte třídu SeberHromadyKeZdi, ve které bude Kája kráčet přímo ke zdi a cestou posbírá všechny hromádky.</li>
+
+</ol>
+
+
+
+
+  <script type="text/javascript">  
+   SyntaxHighlighter.all("code")   
+  </script>       
+  
+
+
+</body></html>

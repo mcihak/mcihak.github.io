@@ -1,0 +1,226 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=windows-1250">
+  <meta name="generator" content="PSPad editor, www.pspad.com">
+  <title>Java - ukázková aplikace</title>
+  <style type="text/css"> 
+  h1 {color: #2174DF; margin-top: 50px; margin-bottom: 10px}
+  h2 {margin-top: 20px; margin-bottom: 0px} 
+  .console {  
+    background-color: black;  
+    color: #ffffff;  
+    font-family: courier;  
+  }  
+  </style>
+  <link href="syntax/Styles/shCore.css" rel="stylesheet" type="text/css">
+  <link href="syntax/Styles/shThemeDefault.css" rel="stylesheet" type="text/css">
+  <script type="text/javascript" src="syntax/Scripts/shCore.js"></script>   
+  <script type="text/javascript" src="syntax/Scripts/shBrushJava.js"></script>   
+
+   
+  </head>
+  <body>
+ 
+  <h1>Ukázková aplikace - jednoduchý textový editor</h1>
+
+<h2>Třída TextovyEditor</h2>
+
+    
+  
+<pre name="code" class="brush: java">
+import java.awt.*;
+import java.awt.event.*;
+import java.io.*;
+
+public class TextovyEditor extends Frame {
+
+  TextArea editTA;	
+	
+  TextovyEditor() {
+    super.setTitle("Textový editor");
+    this.setLayout(new FlowLayout());
+
+    editTA = new TextArea("Zde bude text\n", 40, 100, TextArea.SCROLLBARS_BOTH);
+    this.add(editTA);
+
+    
+    MenuBar lista = new MenuBar();
+    this.setMenuBar(lista);
+    Menu souborMN = new Menu("Soubor", true);
+    lista.add(souborMN);
+    MenuItem otevriMI = new MenuItem("Otevřít...");
+    MenuItem ulozMI = new MenuItem("Uložit...");
+    souborMN.add(otevriMI);
+    souborMN.add(ulozMI);
+    this.pack();
+
+    // reakce na volbu položky Otevřít z menu 
+    otevriMI.addActionListener(new ActionListener() {
+      public void actionPerformed(ActionEvent e) {
+        otevriSoubor();
+      }
+    });
+
+    // reakce na volbu položky Uložit z menu 
+    ulozMI.addActionListener(new ActionListener() {
+      public void actionPerformed(ActionEvent e) {  
+        ulozSoubor();
+      }
+    });
+    
+    // reakce na událost uzavření okna   
+    addWindowListener(new WindowAdapter() {
+		public void windowClosing(WindowEvent e) {
+	        System.exit(0);
+		}
+    });
+  }
+  
+  // dialog pro otevření souboru a následné akce
+  void otevriSoubor() {
+    FileDialog fd = new FileDialog(this, "Otevřít soubor", FileDialog.LOAD);
+	fd.setFile("");
+	fd.setDirectory("\\");
+	fd.setVisible(true);
+  
+  }
+	
+  // dialog pro uložení souboru a následné akce
+  void ulozSoubor() {
+    FileDialog fd = new FileDialog(this, "Uložit soubor", FileDialog.SAVE);
+    fd.setFile("prvni.txt");
+    fd.setDirectory("\\");
+    fd.setVisible(true);
+    
+  }
+  
+  public static void main(String[] args) {
+    new TextovyEditor().setVisible(true);
+  }
+}
+
+</pre> 
+
+<h2>Doplněná třída TextovyEditor</h2>
+<pre name="code" class="brush: java">
+import java.awt.*;
+import java.awt.event.*;
+import java.io.*;
+
+public class TextovyEditor extends Frame {
+
+  TextArea editTA;	
+	
+  TextovyEditor() {
+    super.setTitle("Můj editor");
+    this.setLayout(new FlowLayout());
+
+    editTA = new TextArea("Zde bude text\n", 40, 100, TextArea.SCROLLBARS_BOTH);
+    this.add(editTA);
+
+    
+MenuBar lista = new MenuBar();
+    this.setMenuBar(lista);
+    Menu souborMN = new Menu("Soubor", true);
+    Menu upravyMN = new Menu("Úpravy", true);
+    lista.add(souborMN);
+    lista.add(upravyMN);
+    
+    MenuItem otevriMI = new MenuItem("Otevřít...");
+    MenuItem ulozMI = new MenuItem("Uložit...");
+    MenuItem konecMI = new MenuItem("Konec");
+    souborMN.add(otevriMI);
+    souborMN.add(ulozMI);
+    souborMN.add(konecMI);
+
+    MenuItem vyjmoutMI = new MenuItem("Vyjmout");
+    MenuItem kopirovatMI = new MenuItem("Kopírovat");
+    MenuItem vlozitMI = new MenuItem("Vložit");    
+    upravyMN.add(vyjmoutMI);
+    upravyMN.add(kopirovatMI);    
+    upravyMN.add(vlozitMI);
+        
+    this.pack();
+
+  // reakce na volbu položky Otevřít z menu 
+    otevriMI.addActionListener(new ActionListener() {
+      public void actionPerformed(ActionEvent e) {
+        otevriSoubor();
+      }
+    });
+
+  // reakce na volbu položky Uložit z menu 
+  ulozMI.addActionListener(new ActionListener() {
+      public void actionPerformed(ActionEvent e) {  
+        ulozSoubor();
+      }
+    });
+    
+  // reakce na volbu položky Konec z menu 
+  konecMI.addActionListener(new ActionListener() {
+      public void actionPerformed(ActionEvent e) {  
+        editTA.insert("Cha, cha, nechce se mi končit :-)", 5);
+      }
+    });    
+    
+  // reakce na událost uzavření okna   
+  addWindowListener(new WindowAdapter() {
+		public void windowClosing(WindowEvent e) {
+	        System.exit(0);
+		}
+	});
+  }
+  
+  // dialog pro otevření souboru a následné akce
+  void otevriSoubor() {
+    FileDialog fd = new FileDialog(this, "Otevřít soubor", FileDialog.LOAD);
+	fd.setFile("");
+	fd.setDirectory("\\");
+	fd.setVisible(true);
+  File soubor = new File(fd.getDirectory()+fd.getFile());
+    String radek;
+    try {
+        FileReader fr = new FileReader(soubor);
+        BufferedReader bfr = new BufferedReader(fr);
+        while((radek = bfr.readLine()) != null) {         
+          editTA.append(radek + System.getProperty("line.separator"));
+        }  
+        bfr.close();
+    } catch (IOException ioex) {
+    	editTA.append("Při otvírání souboru došlo k chybě.");
+    	editTA.append(ioex.getMessage()); 
+    }
+  }
+	
+  // dialog pro uložení souboru a následné akce
+  void ulozSoubor() {
+    FileDialog fd = new FileDialog(this, "Uložit soubor", FileDialog.SAVE);
+    fd.setFile("prvni.txt");
+    fd.setDirectory("\\");
+    fd.setVisible(true);
+    try {
+      File soubor = new File(fd.getDirectory()+fd.getFile());
+      FileWriter fw = new FileWriter(soubor);
+      PrintWriter pw = new PrintWriter(fw);
+      pw.print(editTA.getText());              
+      pw.close();
+    }
+    catch (IOException ioex) {
+  	  editTA.append("Při ukládání souboru došlo k chybě.");
+  	  editTA.append(ioex.getMessage());
+    }           
+  }
+  
+  public static void main(String[] args) {
+    new TextovyEditor().setVisible(true);
+  }
+}
+</pre>
+
+  <script type="text/javascript">  
+   SyntaxHighlighter.all("code")   
+  </script>    
+  </body>
+</html>
+
