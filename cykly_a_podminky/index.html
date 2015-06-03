@@ -17,11 +17,16 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css">
     <link rel="stylesheet" href="assets/css/styles.css">
     <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <link href="syntax/Styles/shCore.css" rel="stylesheet" type="text/css">
+  <link href="syntax/Styles/shThemeDefault.css" rel="stylesheet" type="text/css">
+  <script type="text/javascript" src="syntax/Scripts/shCore.js"></script>   
+  <script type="text/javascript" src="syntax/Scripts/shBrushJava.js"></script> 
+
 </head>
 <body>
     <header>
-        <h1>Michal Čihák</h1>
-        <p>Personal website</p>
+        <h1>Kroužek programování</h1>
+        <p>ukázky kódů v Javě, úlohy a jiné :-)</p>
     </header>
 
     <div id="banner">
@@ -44,9 +49,12 @@
             
 
 
-<h1>Programování v jazyce Java – řídící struktury</h1>  
+<h1>Cykly a podmínky</h1>  
 
 <h2>Ukázka porovnání dvou čísel</h2>
+
+<p>V následující ukázce uživatel zadá postupně dvě čísla. Program zjistí, které z těchto čísel je větší. V programu si můžete prohlédnout použití podmíněného příkazu <code>if</code>. V závorce za tímto příkazem může být zapsána jakákoliv podmínka. Při jejím zápisu se používají operátory &gt; (vetší než), &lt; (menší než), &gt;= (větší nebo rovno než), &lt;= (menší nebo rovno než), == (rovná se - pozor, rovnítka jsou skutečně dvě!), != (nerovná se). Pokud potřebujete zapsat více podmínek najednou, použijete logické spojky && (konjunkce - a zároveň), || (disjunkce - nebo), ! (negace). Co by asi tak mohl znamenat třeba zápis <code>(a <= 3) &&  !(a < 5)</code>?</p>
+
 <pre name="code" class="brush: java">
 import java.util.Scanner;
  
@@ -66,8 +74,23 @@ class Porovnani {
     }
 }
 </pre>
+
+<h2>Úkol:</h2>
+<ol>
+<li> Napište program, který požádá uživatele o zadání jednoho celého čísla. Poté program vypíše, jestli dané číslo:
+<ul>
+<li>je kladné;</li>
+<li>leží mezi čísly -10 a 10;</li>
+<li>neleží mezi čísly  -10 a 10.
+</ul>
+</li>
+
  
 <h2>Ukázka - jak poznat sudé číslo (číslo dělitelné 2)</h2>
+
+<p>V následující ukázce uživatel zadá jedno čísla. Program zjistí, zda je toto číslo sudé nebo liché. V programu se používá operátor %. Tento operátor určí zbytek při celočíselném dělení. Například výsledek opreace 17 % 5 je číslo 2, protože 17 děleno 5 je 3, ale nás zajímá zbytek, který je 2. Podobně například 23 % 9 je 5. V případě. Všimněte si, že například 15 % 5 je 0, protože číslo 15 je dělitelné pěti. Takto snadno poznáme, zda je dané číslo dělitelné dvěma.</p>
+
+
 <pre name="code" class="brush: java">
 import java.util.Scanner;
  
@@ -89,23 +112,25 @@ class Sude {
 <h2>Úkoly:</h2>
 <ol>
 <li> Napište program, který požádá uživatele o zadání jednoho celého čísla. Poté program vypíše, jestli dané číslo:
-<ol>
-<li>je kladné</li>
-<li>leží v intervalu (-10, 10)</li>
-<li>je sudé</li>
-<li>je dělitené 3 nebo 5</li>
-</ol>
+<ul>
+<li>je dělitelné pěti;</li>
+<li>není dělitelné třemi ani pěti;</li>
+<li>není dělitelné třemi ani pěti.</li>
+</ul>
 </li>
 <li>Napište program, který požádá uživatele o zadání tří čísel a určí největší z nich.</li>
-<li> Napište program, který požádá uživatele o zadání tří čísel a vypíše je v pořadí od nejmenšího k největšímu.</li>
+<li>Napište program, který požádá uživatele o zadání tří čísel a vypíše je v pořadí od nejmenšího k největšímu.</li>
 </ol>
  
  
 <h2>Ukázka cyklu for - výpis všech lichých čísel od 1 do 99</h2>
+<p>Při programování často potřebujeme některý příkaz nebo skupinu příkazů zopakovat mnohokrát. K tomuto účelu složí cykly. Následující cyklus například vypíše všechna lichá čísla od 1 do 99. Všimněte si příkazu i+= 2, který zvýší hodnotu proměnné i o 2.</p>   
+
+
 <pre name="code" class="brush: java">
 class VypisLichych {  
     public static void main(String[] args) {  
-        int i, s=0;
+        int i;
         for (i=1; i &lt;= 99; i+=2)
         {    
             System.out.println(i);                              
@@ -115,16 +140,18 @@ class VypisLichych {
 </pre>
  
 <h2>Ukázka cyklu for - součet čísel od 1 do 100</h2>
+<p>V těle cyklu nemusíme nutně něco vypisovat, můžeme třeba hodnoty sčítat. Příkaz s+= i zvětší hodnotu proměnné s o hodnotu, která je v dané chvíli zrovna uložena v proměnné i (ta se ale průběžně mění).</p> 
+
 <pre name="code" class="brush: java">
 class Soucet100 {  
     public static void main(String[] args) {  
         int i, s=0;
         for (i=1; i &lt;= 100; i++)
         {    
-            s = s + i;                 
-        }  
-        System.out.println(s);             
+            s += i;                 
+        }            
     }
+    System.out.println("Součet je ", s); 
 } 
 </pre>
  
