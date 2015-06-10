@@ -1,0 +1,208 @@
+﻿<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+        <!-- SEO -->
+        <title>Kroužek programování</title>
+        <meta name="keywords" content="">
+        <meta name="description" content="">
+        <meta name="googlebot" content="snippet,archive">
+        <meta name="robots" content="index, follow">
+        <meta name="author" content="Michal Čihák">
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="/assets/css/styles.css">
+        <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+    </head>
+    <body>
+        <header>
+            <h1>Kroužek programování</h1>
+
+            <p>ukázky kódů v Javě, úlohy a jiné :-)</p>
+        </header>
+
+        <div id="banner">
+            <div class="wrapper">
+                <div class="downloads">
+                    <ul>
+                        <li><a href="https://github.com/GFMP" class="button">GFMP</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="wrapper">
+            <nav>
+                <ul>
+                    <li class="tag-h2"><a href="cykly_a_podminky.html">Cykly a podmínky</a></li>
+                    <li class="tag-h2 active"><a href="./">Pole</a></li>
+                    <li class="tag-h2"><a href="../index.html">Úvodní stránka</a></li>
+                </ul>
+            </nav>
+            <section>
+
+                <h1>Pole</h1>
+
+                <h2>Ukázka práce s polem - vložení pěti čísel do pole a jejich výpis</h2>
+
+                <p>
+                    V následující ukázce uživatel zadá postupně pět čísel. Tato čísla se uloží do pole předem připraveného deklarací 
+                    <code>int[] p = new int[5]</code>. Toto pole je typu <code>int</code>, proto je do něj možno ukládat pouze celá čísla.
+                    Jeho délka je 5, můžete si jej tedy představit jako 5 přihrádek (pozic) pro celá čísla. Jednotlivé pozice se 
+                    číslují indexy 0, 1, 2, 3, 4. S poli můžete pracovat podobně jako s proměnnými. Můžete například na první pozici 
+                    (index 0) v poli vložit číslo 64 příkazem <code>p[0] = 64</code>. Nebo můžete vypsat hodnotu uloženou na druhé pozici
+                    (index 1) v poli příkazem <code>System.out.print(p[1])</code>. Hlavní výhody polí se ukáží při práci s cykly - index 
+                    pole může udávat pomocná proměnná, jejíž hodnoty se mění pomocí cyklu. V následující ukázce plní tuto roli proměnná i, 
+                    jejíž hodnoty se pomocí cyklu postupně mění od 0 do 4. 
+                </p>
+
+                <pre>
+iimport java.util.Scanner;
+
+class PrvniPole {
+
+    public static void main(String[] args) {
+        int[] p = new int[5];
+        Scanner sc = new Scanner(System.in);
+
+        for (int i = 0; i <= 4; i++) {
+            System.out.print("Napis cislo: ");
+            p[i] = sc.nextInt();
+        }
+        System.out.println("V poli jsou cisla: ");
+        for (int i = 0; i <= 4; i++) {
+            System.out.print(p[i] + ", ");
+        }
+    }
+}
+                </pre>
+
+                <h2>Úkoly:</h2>
+                <ol>
+                    <li> Upravte kód předchozí ukázky tak, aby bylo možné do pole vložit 8 čísel
+                        a poté byl proveden jejich přehledný výpis na obrazovku.
+                    </li>
+                    <li> Upravte kód předchozího cvičení tak, aby program vypsal čísla vložená 
+                        uživatelem do pole v opačném pořadí (pozpátku).
+                    </li> 
+                    <li>Vytvořte pole pro uložení teplot naměřených za posledních 10 hodin:
+                        <pre>
+public class Teploty {
+
+    public static void main(String[] args) {
+        int[] teplota = new int[10];
+        teplota[0] = 19;                // 0 hodin (půlnoc :-)
+        teplota[1] = 17;                // 1 hodina v noci 
+        teplota[2] = 16;
+        teplota[3] = 15;
+        teplota[4] = 15;
+        teplota[5] = 14;
+        teplota[6] = 13;
+        teplota[7] = 15;                // 7 hodin ráno
+        teplota[8] = 18;
+        teplota[9] = 21;
+    }
+}
+
+                        </pre>   
+                        Postupně upravujte kód této ukázky podle následujích pokynů:
+                        <ul>
+                            <li>Uživatel zadá hodinu (0–9) a program vypíše teplotu naměřenou v tuto hodinu. 
+                                Komunikace s programem by měla vypadat nějak takto:
+                                <pre>
+Zadej teplotu: 5
+V 5:00 byla naměřena teplota 14ºC.
+                                </pre>                               
+                            </li>
+                            <li>Pomocí for cyklu vypište všechny naměřené hodnoty do přehledné tabulky:
+                                <pre>
+hodina	teplota
+-------------------
+0		19
+1		17
+2		16
+                                </pre> 
+                                atd.       
+                            </li>
+                            <li>Pomocí for cyklu najděte největší hodnotu v poli (nejvyšší naměřenou teplotu). 
+                                Vypište tuto hodnotu a čas, kdy byla naměřena.                             
+                            </li>
+                            <li>Pomocí for cyklu vypočítejte aritmetický průměr naměřených teplot a vypište jej.
+                            </li>    
+                        </ul>
+                    </li>
+
+                </ol>
+
+                <h2>Ukázka - pole náhodných čísel</h2>
+
+                <p>V následující ukázce vytvoříme pole o délce 100 a pomocí generátoru náhodných čísel jej naplníme náhodnými čísly
+                    odpovídajícími hodům kostkou. </p>
+
+                <pre>
+import java.util.Random;
+
+public class Kostka {
+
+    public static void main(String[] args) {
+        Random hod = new Random();
+        int[] vysledek = new int[100];
+        for (int i = 0; i <= 99; i++) {
+            vysledek[i] = 1 + hod.nextInt(6);
+        }
+    }
+}      
+                </pre> 
+
+                <h2>Úkoly:</h2>
+                <ol>
+                    <li>Pomocí for cyklu vypište všechny výsledky uložené v poli (všech 100 hodů kostkou).
+                        Výpis může vypadat například takto (samozřejmě s jinými náhodnými čísly): 
+                        6, 3, 6, 4, 6, 2, 1, 4, 1, 4, 3, 2, 4, 4, 6, 6, 4, 5, 3, 2, 5, 6, atd.
+                    </li>
+                    <li>Pomocí for cyklu projděte celé pole a spočítejte, kolik je v něm uloženo šestek
+                        (četnost šestek při 100 hodech kostkou).
+                    </li>
+                    <li>Vytvořte další pole <code>cetnosti</code> (celočíselné pole délky 6) a na jednotlivé pozice tohoto pole
+                        uložte četnosti jednotlivých výsledků 1, 2, ..., 6 (na první pozici v poli bude uveden počet jedniček,
+                        na druhé pozici v poli počet dvojek, atd.). 
+                        Poté vypište přehlednou statistiku podle následujícího vzoru (samozřejmě s jinými četnostmi):
+                        <pre>
+výsledek    1	2   3	4   5	6
+četnost     16	23  14	15  21	11 
+                        </pre>
+                    </li>
+                </ol>    
+
+                <h2>Úloha pro zdatnější</h2>
+                <p>Naprogramujte hru Mastermind, viz <a href="http://cs.wikipedia.org/wiki/Logik_%28hra%29">Logik na Wikipedii</a>.
+                    Cílem hry je uhodnout čtyři čísla, která má počítač uložená v poli 
+                    (tato číslo program náhodně vygeneruje z rozsahu 1 až 6).  
+                    Hráč má možnost opakovaně zadávat čísla (hádat). Důležité je, že hráč musí hledaná čísla uvést i ve
+                    správném pořadí. Po každém zadání čtyř čísel mu počítač napovídá podle následujích pravidel:</p>
+                <ol>
+                    <li>za každé uhodnuté číslo, které hráč umístil na správné místo v pořadí vypíše program jeden kroužek (znak "o");
+                    </li> 
+                    <li>za každé uhodnuté číslo, které hráč umístil na špatné místo v pořadí vypíše program jednu hvězdičku (znak "*").
+                    </li>
+                </ol>
+                <p>Hádající hráč přitom neví, za která čísla byly přiděleny hodnotící znaky. Hra končí, když hádající hráč uhodne kombinaci 
+                    (vítězný pokus je tedy ohodnocen čtyřmi hvězdičkami).
+                </p>
+            </section>
+            <footer>
+                <p>
+                    <small>Hosted on GitHub Pages &mdash; Theme by <a href="http://twitter.com/#!/michigangraham">mattgraham</a>
+                    </small>
+                </p>
+            </footer>
+        </div>
+
+        <!-- SCRIPTS -->
+        <!-- SCRIPTS -->
+        <script src="/assets/js/modernizr.js"></script>
+    </body>
+</html>
