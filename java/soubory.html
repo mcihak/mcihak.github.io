@@ -92,9 +92,19 @@ Podobným způsobem se v javě odchytávají i jiné možné chyby, jedná se o 
 
                 <h2>Úkol:</h2>
                 <ol>
-<li>Zapište do souboru posloupnost.txt čísla od 1 do 100 tak, aby na každém řádku bylo vždy právě 10 čísel.</li>
 <li>Zapište do souboru mocniny.txt čísla od 1 do 100 spolu s jejich druhými mocninami. Na každém řádku bude vždy jen jedno číslo spolu se svou mocninou.</li>
-<li>Napište program, kterému na vstupu zadáte přirozené číslo <i>n</i>. Program poté vygeneruje tabulku druhých mocnin čísel od 1 do <i>n</i> (podobnou jako v předchozí úloze) a zapíše ji do souboru mocniny.html v podobě jednoduché webové stránky.</li>  
+<li>Zapište do souboru posloupnost.txt čísla od 1 do 100 tak, aby na každém řádku bylo vždy právě 10 čísel.</li>
+<li>Napište program, kterému na vstupu zadáte přirozené číslo <i>n</i>. Program poté 
+vypíše do souboru hvezdicky.txt postupně přirozená čísla od 1 do <i>n</i> spolu s počtem hvězdiček rovným danému číslu. 
+Výpis by měl vypadat takto:
+<pre>
+1 *
+2 **
+3 ***
+4 ****
+...
+</pre>
+</li>  
 
                         </ul>
                     </li>
@@ -104,7 +114,13 @@ Podobným způsobem se v javě odchytávají i jiné možné chyby, jedná se o 
                 <h2>Formátované čtení z textového souboru</h2>
 
                 <p>
-V souboru cisla.txt jsou uložena přirozená čísla oddělená mezerami. Následující program sečte všechna tato čísla a výsledek vypiše na obrazovku. 
+V souboru <code>cisla.txt</code> jsou uložena přirozená čísla oddělená mezerami. Následující program sečte všechna tato čísla a výsledek vypiše na obrazovku.
+Abychom mohli ze souboru čísla přečíst, musíme ho nejprve otevřít. K tomu je potřeba vytvořit objekt typu <code>FileReader</code>. Při jeho vytváření použijeme
+název souboru <code>cisla.txt</code>. Tento soubor musí být již předem připraven ve složce aktuálního projektu (můžete jej vytvořit například pomocí editoru
+Poznámkový blok). Protože chceme používat metodu <code>readLine()</code> pro čtení po celých řádcích,
+musíme ještě vytvořit objekt typu <code>BufferedReader</code>. Tento objekt pojmenujeme třeba <code>bfr</code>
+(může se jmenovat i jinak) a pomocí něj provádíme čtení ze souboru. Čtení se ukončí ve chvíli, kdy metoda <code>readLine()</code> vrátí hodnotu <code>null</code>.
+Po ukončení čtení ze souboru bychom neměli zapomenout soubor uzavřít pomocí metody <code>close()</code>. 
                 </p>
 
 
@@ -144,13 +160,12 @@ public class FormatovaneCteni {
 <li>V souboru cisla.txt jsou uložena přirozená čísla oddělená mezerami. Zapište do souboru vystup.txt druhé mocniny těchto čísel.</li>
 <li>V souboru jmena.txt jsou uložena jména osob (max. 14 znaků), každé jméno na jednom řádku. Zapište do souboru vystup.txt tato jména spolu s pořadovým číslem jména.</li>
 <li>V souboru jmena.txt jsou uložena jména osob (max. 14 znaků), každé jméno na jednom řádku. V souboru prijmeni.txt jsou uložena příjmení osob (max. 14 znaků), každé jméno na jednom řádku. Zapište do souboru vystup.txt tato jména a příjmení tak, aby na každém řádku bylo vždy jedno jméno a jedno příjmení.</li>
-<li>V souboru jmena.txt jsou uložena jména osob (max. 14 znaků), každé jméno na jednom řádku. Zapište do souboru tabulka.html tato jména tak, aby vznikla jednoduchá webová stránka obsahující tabulku se jmény.</li>
                 </ol>
 
 
 
                 <h2>Úloha pro zdatnější</h2>
-                <p>Zatím nic :-(
+                <p>Zkuste vyřešit některou z úloh <a href="https://ksp.mff.cuni.cz/z/ulohy/28/zadani1.html">Korespondenčního semináře z programování</p>.
 
                 </p>
             </section>
