@@ -1,0 +1,169 @@
+﻿<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+        <!-- SEO -->
+        <title>Kroužek programování</title>
+        <meta name="keywords" content="">
+        <meta name="description" content="">
+        <meta name="googlebot" content="snippet,archive">
+        <meta name="robots" content="index, follow">
+        <meta name="author" content="Michal Čihák">
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="/assets/css/styles.css">
+        <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+    </head>
+    <body>
+        <header>
+            <h1>Kroužek programování</h1>
+
+            <p>ukázky kódů v Javě, úlohy a jiné :-)</p>
+        </header>
+
+        <div id="banner">
+            <div class="wrapper">
+                <div class="downloads">
+                    <ul>
+                        <li><a href="https://github.com/GFMP" class="button">GFMP</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="wrapper">
+            <nav>
+                <ul>
+                    <li class="tag-h2"><a href="../index.html">Úvodní stránka</a></li>
+                    <li class="tag-h2"><a href="cykly_a_podminky.html">Cykly a podmínky</a></li>
+                    <li class="tag-h2"><a href="pole.html">Pole</a></li>
+                    <li class="tag-h2 active"><a href="soubory.html">Soubory</a></li>
+                </ul>
+            </nav>
+            <section>
+
+                <h1>Práce se soubory</h1>
+
+                <h2>Formátovaný zápis do textového souboru</h2>
+
+                <p>
+                    V následující ukázce vytvoříme v aktuální složce soubor <code>pokus.txt</code> a zapíšeme do něj text "Ahoj". 
+                    Pro jakýkoliv zápis do souboru je třeba nejprve vytvořit objekt typu <code>FileWriter</code> (tím vlastně 
+                    vytvoříme nový soubor a otevřeme jej pro zápis). 
+                    Protože chceme používat metody <code>print()</code> a <code>println()</code> pro formátovaný zápis do souboru, 
+                    musíme ještě vytvořit objekt typu <code>PrintWriter</code>. Tento objekt pojmenujeme třeba <code>pw</code>
+                    (může se jmenovat i jinak) a pomocí něj provádíme zápis do souboru. Po ukončení zápisu do souboru bychom neměli 
+                    zapomenout soubor uzavřít pomocí metody <code>close()</code>.      
+                </p>
+
+     
+                <pre>
+import java.io.*;
+
+public class FormatovanyZapis {
+  public static void main(String[] args) {		
+    try {
+      FileWriter fw = new FileWriter("pokus.txt");
+      PrintWriter pw = new PrintWriter(fw);
+      pw.print("Ahoj");			
+      pw.close();
+      System.out.println("Zapis do souboru pokus.txt probehl uspesne.");
+    }
+    catch (Exception e) 
+    {
+      System.err.println("Chyba pri zapisu do souboru: " + e);		
+    }
+  }
+}
+                </pre>
+
+                <p>
+Všimněte si ještě, že skupina příkazů, které pracují se souborem, je uzavřena do bloku <code>try</code>.
+Tímto způsobem jsou v programu ošetřena možná rizika při práci se soubory. Například se může stát, že 
+se zápis do souboru se nezdaří, protože uživatel nemá právo zápisu do zvolené složky. V takovém případě
+se ukončí provádění příkazů v bloku <code>try</code> a běh programu pokračuje příkazy v bloku <code>catch</code>.
+Podobným způsobem se v javě odchytávají i jiné možné chyby, jedná se o tzv. <b>mechanismus výjimek (exceptions)<b>.    
+                   
+                </p>
+                
+
+                <h2>Úkol:</h2>
+                <ol>
+<li>Zapište do souboru posloupnost.txt čísla od 1 do 100 tak, aby na každém řádku bylo vždy právě 10 čísel.</li>
+<li>Zapište do souboru mocniny.txt čísla od 1 do 100 spolu s jejich druhými mocninami. Na každém řádku bude vždy jen jedno číslo spolu se svou mocninou.</li>
+<li>Napište program, kterému na vstupu zadáte přirozené číslo <i>n</i>. Program poté vygeneruje tabulku druhých mocnin čísel od 1 do <i>n</i> (podobnou jako v předchozí úloze) a zapíše ji do souboru mocniny.html v podobě jednoduché webové stránky.</li>  
+
+                        </ul>
+                    </li>
+                </ol>
+
+
+                <h2>Formátované čtení z textového souboru</h2>
+
+                <p>
+V souboru cisla.txt jsou uložena přirozená čísla oddělená mezerami. Následující program sečte všechna tato čísla a výsledek vypiše na obrazovku. 
+                </p>
+
+
+                <pre>
+import java.io.*;
+
+public class FormatovaneCteni {
+  public static void main(String[] args) {
+    String radek;
+    int soucet = 0;
+    try {
+      FileReader fr = new FileReader("cisla.txt");
+      BufferedReader bfr = new BufferedReader(fr);
+      while((radek = bfr.readLine()) != null) {
+        String[] cisla = radek.split(" ");
+        for (int i=0; i < cisla.length; i++) {
+          soucet = soucet + Integer.parseInt(cisla[i]);
+        }
+      }
+      System.out.println("Soucet je: " + soucet);
+      bfr.close();
+    }
+    catch (Exception e)    
+    {   
+      System.err.println("Chyba pri cteni souboru: " + e);           
+    }   
+  }
+}
+                </pre>
+
+
+                <h2>Úkoly:</h2>
+                <ol>
+<li>V souboru cisla.txt jsou uložena přirozená čísla oddělená mezerami. Vypište tato čísla na obrazovku.</li>
+<li>V souboru cisla.txt jsou uložena přirozená čísla oddělená mezerami. Najděte největší z těchto čísel a vypište jej na obrazovku.</li>
+<li>V souboru cisla.txt jsou uložena přirozená čísla oddělená mezerami. Zapište do souboru vystup.txt všechna sudá čísla obsažená v souboru cisla.txt</li>
+<li>V souboru cisla.txt jsou uložena přirozená čísla oddělená mezerami. Zapište do souboru vystup.txt druhé mocniny těchto čísel.</li>
+<li>V souboru jmena.txt jsou uložena jména osob (max. 14 znaků), každé jméno na jednom řádku. Zapište do souboru vystup.txt tato jména spolu s pořadovým číslem jména.</li>
+<li>V souboru jmena.txt jsou uložena jména osob (max. 14 znaků), každé jméno na jednom řádku. V souboru prijmeni.txt jsou uložena příjmení osob (max. 14 znaků), každé jméno na jednom řádku. Zapište do souboru vystup.txt tato jména a příjmení tak, aby na každém řádku bylo vždy jedno jméno a jedno příjmení.</li>
+<li>V souboru jmena.txt jsou uložena jména osob (max. 14 znaků), každé jméno na jednom řádku. Zapište do souboru tabulka.html tato jména tak, aby vznikla jednoduchá webová stránka obsahující tabulku se jmény.</li>
+                </ol>
+
+
+
+                <h2>Úloha pro zdatnější</h2>
+                <p>Zatím nic :-(
+
+                </p>
+            </section>
+            <footer>
+                <p>
+                    <small>Hosted on GitHub Pages &mdash; Theme by <a href="http://twitter.com/#!/michigangraham">mattgraham</a>
+                    </small>
+                </p>
+            </footer>
+        </div>
+
+        <!-- SCRIPTS -->
+        <!-- SCRIPTS -->
+        <script src="/assets/js/modernizr.js"></script>
+    </body>
+</html>
